@@ -15,11 +15,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('first_name', 255);
+            $table->string('last_name', 255);
+            $table->unsignedInteger('department_id');
+            $table->string('image_uri', 255);
+            $table->string('nickname', 255);
+            $table->string('slack_user_id', 255)->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->index('slack_user_id');
         });
     }
 
