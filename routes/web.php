@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('login/slack', 'Auth\LoginController@redirectToProvider');
+Route::get('login/slack/callback', 'Auth\LoginController@handleProviderCallback');
